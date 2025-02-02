@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXPECTED="Hello, Test!"
+EXPECTED="Hello, World!"
 OUTPUT=$(node -e "console.log(require('./app')('Test'))")
 
 if [ "$OUTPUT" == "$EXPECTED" ]; then
