@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        deprecated = true
+        deprecated=true
         if deprecated; then
           echo "::warning::Deprecated function found in main.py"
         fi
