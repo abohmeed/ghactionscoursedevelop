@@ -6,9 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set API Key
-        run: |
-          echo "::add-mask::12345"  # Masking the value
-          echo "API_KEY=12345" >> $GITHUB_ENV  # Setting environment variable
+        run: echo "API_KEY=12345" >> $GITHUB_ENV
 
       - name: Use API Key
-        run: echo "Using API Key $API_KEY"
+        run: echo "Using API Key ::add-mask::$API_KEY"
