@@ -2,13 +2,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  example:
+  hybrid_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Set API Key
-        run: echo "API_KEY=12345" >> $GITHUB_ENV
+      - name: Run a command in Ubuntu VM
+        run: echo "This runs on the Ubuntu VM"
 
-      - name: Use API Key
-        run: |
-          echo "::add-mask::$API_KEY"
-          echo "Using API Key $API_KEY"
+      - name: Run inside an Alpine container
+        uses: docker://alpine:3.14 # The image must be accessible without credentials
+        with:
+          entrypoint: /bin/sh
+          args: |
+            -c "echo 'This step runs inside an Alpine container'"
+      - name: Run another command in Ubuntu VM
+        run: echo "Back to the VM"
